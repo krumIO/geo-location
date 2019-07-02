@@ -17,9 +17,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ebidel/geo-location.git"
+    "url": "https://github.com/krumio/geo-location.git"
   },
-  "homepage": "https://webcomponents.org/element/ebidel/geo-location",
+  "homepage": "https://github.com/krumio/geo-location",
   "name": "@krumio/geo-location",
   "version": "3.0.0",
   "resolutions": {
