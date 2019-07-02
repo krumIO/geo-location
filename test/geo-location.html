@@ -11,11 +11,7 @@
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../geo-location.html">
-  </head>
-  <body>
-    <test-fixture id="basic">
-      <template>
+    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>pt src="../../../wct-browser-legacy/browser.js"></script>te>
         <geo-location></geo-location>
       </template>
     </test-fixture>
@@ -25,8 +21,12 @@
         test('instantiating the element works', function() {
           var element = fixture('basic');
           assert.equal(element.is, 'geo-location');
-        });
-      });
-    </script>
-  </body>
-</html>
+    <script type="module">
+import '../geo-location.js';
+suite('geo-location', function() {
+  test('instantiating the element works', function() {
+    var element = fixture('basic');
+    assert.equal(element.is, 'geo-location');
+  });
+});
+</script>

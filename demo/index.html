@@ -10,22 +10,44 @@
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../../google-map/google-map.html">
-    <link rel="import" href="../geo-location.html">
-    <link rel="import" href="navigation-arrow.html">
+    <script type="module" src="../../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>-snippet.js"></script>
+    <script type="module" src="../../../google-map/google-map.js"></script>
+    <script type="module" src="../geo-location.js"></script>
+    <script type="module" src="./navigation-arrow.js"></script>
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
         google-map {
           height: 300px;
         }
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        google-map {
+          height: 300px;
+        }
       </style>
-    </custom-style>
-  </head>
-  <body>
-    <div class="vertical-section-container centered">
+    </custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>>
+        <template>
+          <dom-bind>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
       <h3>Get the device geolocation values</h3>
       <demo-snippet>
         <template>
@@ -47,7 +69,7 @@
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <geo-location watch-pos high-accuracy latitude="{{latitude}}" longitude="{{longitude}}"></geo-location>
+              <geo-location watch-pos="" high-accuracy="" latitude="{{latitude}}" longitude="{{longitude}}"></geo-location>
 
               <!-- TODO: change the API key to your own. -->
               <google-map latitude="[[latitude]]" longitude="[[longitude]]" api-key="AIzaSyD3E1D9b-Z7ekrT3tbhl_dy8DCXuIuDDRc">
@@ -63,7 +85,7 @@
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <geo-location watch-pos high-accuracy position="{{position}}"></geo-location>
+              <geo-location watch-pos="" high-accuracy="" position="{{position}}"></geo-location>
 
               <navigation-arrow heading="[[position.coords.heading]]"></navigation-arrow>
             </template>
@@ -76,7 +98,7 @@
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <geo-location watch-pos high-accuracy timeout="1000" position="{{position}}"></geo-location>
+              <geo-location watch-pos="" high-accuracy="" timeout="1000" position="{{position}}"></geo-location>
 
               <ul>
                 <li>Timestamp: [[position.timestamp]]</li>
@@ -92,6 +114,7 @@
           </dom-bind>
         </template>
       </demo-snippet>
-    </div>
-  </body>
-</html>
+    </div>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
