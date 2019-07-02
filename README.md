@@ -39,3 +39,8 @@ Command that was run with Modulizer:
 ```bash
 modulizer --out . --import-style=name
 ```
+
+Command to publish:
+```bash
+npm publish --access public
+```
