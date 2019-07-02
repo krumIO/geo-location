@@ -1,6 +1,10 @@
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/ebidel/geo-location)
+## Attn! 
+
+This was generated with Modulizer and may be broken
 
 ## \<geo-location\>
+
+Original Polymer 2 element: [https://github.com/ebidel/geo-location](https://github.com/ebidel/geo-location)
 
 Geolocation API Polymer web component.
 
@@ -29,4 +33,14 @@ Example to get the device geolocation values:
   <li>Latitude: [[latitude]]</li>
   <li>Longitude: [[longitude]]</li>
 </ul>
+```
+Command that was run with Modulizer:
+
+```bash
+modulizer --out . --import-style name
+```
+
+Command to publish:
+```bash
+npm publish --access public
 ```
